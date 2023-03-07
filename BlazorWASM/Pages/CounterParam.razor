@@ -1,0 +1,25 @@
+﻿@page "/counterParam"
+@page "/counterParam/{increment:int}"
+
+<h3>@Title</h3>
+<h2>Rounte constraint : @increment</h2>
+
+@code {
+    [Parameter] public String? Title { get; set; } 
+    [Parameter] public int increment { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Title = "Mencoba Default";
+    }
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine($"On Parameters => Title  :{Title}");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine("THis is first Render");
+    }
+}
